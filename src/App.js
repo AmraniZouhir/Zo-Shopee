@@ -9,12 +9,15 @@ import {
   RouterProvider,
   ScrollRestoration,
 } from "react-router-dom";
+
 import Carte from "./pages/Carte";
 import { prodactData } from "./api/Apis";
+import DetailsProduct from "./commponents/DetailsProduct";
 const Layout = () => {
   return (
     <div>
       <Header />
+      <ScrollRestoration/>
       <Outlet />
       <Foter />
     </div>
@@ -34,6 +37,11 @@ const router = createBrowserRouter([
         path: "/Cart",
         element: <Carte />,
       },
+      {
+        path: "/DetailsProduct/:id",
+        element: <DetailsProduct />,
+      },
+   
 
     ],
   },

@@ -1,15 +1,31 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 export default function ProdactCard({ prodact }) {
-  console.log(prodact);
+
+  const navigate =useNavigate()  
+  const _id = prodact.title
+  const idstring = (_id)=>{
+    return String(_id).toLowerCase().split(" ").join("")
+  }
+  const rootId = idstring(_id)
+  
+const handelClick =()=>{
+  navigate(`/DetailsProduct/${rootId}`,{
+    state:{
+      item : prodact
+    }
+  })
+}
+
   return (
     <div className="group relative">
-      <div className="w-full h-96 cursor-pointer overflow-hidden">
+      <div onClick={handelClick} className="w-full h-96 cursor-pointer overflow-hidden">
         <img
           className="w-full h-full object-cover group-hover:scale-110 duration-500"
           src={prodact.image}
-          alt="ssss"
+          alt="image prodact"
         />
       </div>
       <div className="w-full border-[1px] px-2 py-4">
