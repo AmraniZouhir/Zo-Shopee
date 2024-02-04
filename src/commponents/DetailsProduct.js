@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { MdOutlineStar } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { addToCart } from "../Redux/Z-shopeeSlice";
 
 export default function DetailsProduct() {
+  const despatche = useDispatch()
+  const [ZshopeeQuantity,setZshopeeQuantity] = useState(1)
   const [prodactDetails, setProdactDetails] = useState({});
   const Location = useLocation();
   console.log(Location.state);
@@ -55,16 +59,27 @@ export default function DetailsProduct() {
             <div className="w-52 flex items-center justify-between text-gray-500 gap-4 border p-3">
               <p className="text-sm">Quantity</p>
               <div className="flex items-center gap-4 text-sm font-semibold">
-                <button className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">
+                <button  onClick={() => setZshopeeQuantity(ZshopeeQuantity === 1 ? 1 : ZshopeeQuantity - 1)} className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">
                   -
                 </button>
-                <span>{1}</span>
-                <button className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">
+                <span>{ZshopeeQuantity}</span>
+                <button onClick={()=>setZshopeeQuantity(ZshopeeQuantity + 1)} className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">
                   +
                 </button>
               </div>
             </div>
-            <button className="bg-black text-white py-3 px-3 active:bg-gray-800">
+            <button 
+            onClick={()=>despatche(addToCart
+              ({
+              _id :prodactDetails._id,
+              image: prodactDetails.image,
+              title: prodactDetails.title,
+              price: prodactDetails.price,
+              description: prodactDetails.description,
+              quantity:ZshopeeQuantity,
+
+            }))}
+            className="bg-black text-white py-3 px-3 active:bg-gray-800">
               Add to cart
             </button>
           </div>
