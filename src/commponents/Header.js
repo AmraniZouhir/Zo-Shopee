@@ -25,10 +25,12 @@ export default function Header() {
             <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer'>Element</li>
             <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer'>Blog</li>
           </ul>
+          <Link to="/Cart">
           <div className='relative'> 
             <img src={iconHeder} className='w-12' alt=''/>
             <span className='absolute w6 top-4 left-5 text-sm flex items-center justify-center font-semibold font-TitelFont'>{prodactData.length}</span>
           </div>
+          </Link>
           <img className='w-9 rounded-full' src='https://previews.123rf.com/images/faysalfarhan/faysalfarhan1602/faysalfarhan160200290/52258617-ecommerce-icon-black-glossy-round-button.jpg'/>
         </div>
 

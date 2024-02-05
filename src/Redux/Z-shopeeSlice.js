@@ -19,7 +19,34 @@ export const ZshopeeSlice = createSlice({
         }
 
     },
+    deleteItems : (state,action)=>{
+      state.prodactData = state.prodactData.filter(
+        (item)=>item._id !== action.payload
+      )
+    },
+    resetCart : (state)=>{
+      state.prodactData = []
+    },
+
+    IncreamentQuantity : (state , action )=>{
+      const item = state.prodactData.find(
+        (item) =>item._id === action.payload._id
+      );
+      if(item){
+        item.quantity++
+      }
+    },
+    DencreamentQuantity : (state , action )=>{
+      const item = state.prodactData.find(
+        (item) =>item._id === action.payload._id
+      );
+      if(item.quantity === 1){
+        item.quantity = 1
+      }else{
+        item.quantity--
+      }
+    }
   },
 });
-export const { addToCart} = ZshopeeSlice.actions;
+export const { addToCart,deleteItems,IncreamentQuantity,DencreamentQuantity,resetCart} = ZshopeeSlice.actions;
 export default ZshopeeSlice.reducer;

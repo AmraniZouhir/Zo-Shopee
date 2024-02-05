@@ -3,6 +3,7 @@ import { MdOutlineStar } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { addToCart } from "../Redux/Z-shopeeSlice";
+import { ToastContainer ,toast} from "react-toastify";
 
 export default function DetailsProduct() {
   const despatche = useDispatch()
@@ -78,7 +79,9 @@ export default function DetailsProduct() {
               description: prodactDetails.description,
               quantity:ZshopeeQuantity,
 
-            }))}
+            }))
+            & toast.success(`${prodactDetails.title} is added`)
+          }
             className="bg-black text-white py-3 px-3 active:bg-gray-800">
               Add to cart
             </button>
@@ -86,6 +89,19 @@ export default function DetailsProduct() {
           <p className="text-base text-gray-500">category : <span className="font-medium capitalize">{prodactDetails.category}</span></p>
         </div>
       </div>
+
+      <ToastContainer
+        position="top-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }
