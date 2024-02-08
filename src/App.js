@@ -13,6 +13,7 @@ import {
 import Carte from "./pages/Carte";
 import { prodactData } from "./api/Apis";
 import DetailsProduct from "./commponents/DetailsProduct";
+import Login from "./pages/Login";
 const Layout = () => {
   return (
     <div>
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/DetailsProduct/:id",
         element: <DetailsProduct />,
+      },
+      {
+        path: "/Login",
+        element: <Login />,
       },
    
 

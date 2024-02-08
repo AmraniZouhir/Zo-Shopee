@@ -10,7 +10,7 @@ export default function DetailsProduct() {
   const [ZshopeeQuantity, setZshopeeQuantity] = useState(1);
   const [prodactDetails, setProdactDetails] = useState({});
   const Location = useLocation();
-  console.log(Location.state);
+  // console.log(Location.state);
   useEffect(() => {
     setProdactDetails(Location.state.item);
   }, []);

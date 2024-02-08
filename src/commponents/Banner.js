@@ -18,7 +18,7 @@ export default function Banner() {
     setCurrentSlaider(currentSlaider === 3 ? 0 : (prev) => prev + 1);
   };
 
-  console.log(currentSlaider);
+  // console.log(currentSlaider);
   return (
     <div className="w-full h-auto overflow-x-hidden">
       <div className="w-screen h-full relative">
