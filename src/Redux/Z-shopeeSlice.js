@@ -45,8 +45,15 @@ export const ZshopeeSlice = createSlice({
       }else{
         item.quantity--
       }
-    }
+    },
+
+    addUser:(state , action )=>{
+      state.userInfo = action.payload
+    },
+    remouveUser:(state , action )=>{
+      state.userInfo = null
+    },
   },
 });
-export const { addToCart,deleteItems,IncreamentQuantity,DencreamentQuantity,resetCart} = ZshopeeSlice.actions;
+export const { addToCart,deleteItems,IncreamentQuantity,DencreamentQuantity,resetCart,addUser,remouveUser} = ZshopeeSlice.actions;
 export default ZshopeeSlice.reducer;

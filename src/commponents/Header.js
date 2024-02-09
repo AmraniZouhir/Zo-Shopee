@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux'
 export default function Header() {
 
     const prodactData = useSelector((state)=> state.ZshopeeSlic.prodactData)
-    // console.log(prodactData)
+    const userInfo = useSelector((state)=> state.ZshopeeSlic.userInfo)
+    console.log(userInfo)
   return (
     <div className="w-full h-20 bg-white border-b-[1px] border-gray-800 font-bodyFont sticky top-0 z-50">
       <div className='max-w-screen-xl h-full mx-auto flex items-center justify-between'>
@@ -32,8 +33,11 @@ export default function Header() {
           </div>
           </Link>
           <Link to={"/Login"}>
-          <img className='w-9 rounded-full' src={iconLogin}/>
+          <img className='w-9 rounded-full' alt='user logo' src={userInfo ? userInfo.image : iconLogin }/>
           </Link>
+          {
+            userInfo && <p>{userInfo.name}</p>
+          }
         </div>
 
       </div>

@@ -3,10 +3,15 @@ import { github, google } from "../assets";
 import { getAuth, signInWithPopup, GoogleAuthProvider,signOut } from "firebase/auth";
 import app from '../firebase.config'
 import { ToastContainer, toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addUser, remouveUser } from "../Redux/Z-shopeeSlice";
 
 
 
 export default function Login() {
+  const dispatche = useDispatch()
+  const navigater = useNavigate()
     const auth = getAuth();
 
 const provider =new GoogleAuthProvider()
@@ -15,7 +20,17 @@ const provider =new GoogleAuthProvider()
     e.preventDefault();
     signInWithPopup(auth , provider).then((result)=>{
         const user = result.user
-        console.log(user)
+        dispatche(addUser(
+          {
+            _id: user.uid,
+              name : user.displayName,
+              email: user.email,
+              image:user.photoURL
+          }
+        ));
+        setTimeout(()=>{
+          navigater("/")
+        },1500)
     }).catch((error)=>{
         console.log(error)
     })
@@ -24,13 +39,13 @@ const provider =new GoogleAuthProvider()
   const handelSingOut =()=>{
     signOut(auth).then(()=>{
         toast.success("Log Out Successfully!!")
-        // dispatch(removeUser())
+        dispatche(remouveUser())
     }).catch((error)=>{
         console.log(error)
     })
   }
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-10 py-20">
+    <div className="w-full flex flex-col items-center justify-center gap-14 py-28">
       <div className="w-full flex items-center justify-center gap-10">
         <div onClick={handleGoogleLogin} className="text-base w-60 h-12 tracking-wide border-[1px] border-gray-400 rounded-md flex items-center jus  gap-2 hover:border-blue-600 cursor-pointer duration-300">
           <img src={google} alt="image google" className="w-8 gap-3 m-5" />
