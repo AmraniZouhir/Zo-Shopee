@@ -5,33 +5,63 @@ import CarteItems from "../commponents/CarteItems";
 import { toast } from "react-toastify";
 import StripeCheckout from "react-stripe-checkout";
 
+
 export default function Carte() {
   const prodactData = useSelector((state) => state.ZshopeeSlic.prodactData);
   const userInfo = useSelector((state) => state.ZshopeeSlic.userInfo);
   const [totalAmt, setTotalAmt] = useState("");
-  const [payNow , setPayNow] = useState(false)
+  const [payNow, setPayNow] = useState(false);
 
   useEffect(() => {
     let price = 0;
-    prodactData.map((item) => {
+    prodactData.forEach((item) => {
       price += item.price * item.quantity;
-      return price;
     });
     setTotalAmt(price.toFixed(2));
-  });
+  }, [prodactData]);
 
-  const handelCheckout =()=>{
-    if(userInfo){
+  const handleCheckout = () => {
+    if (userInfo) {
       setPayNow(true);
-    }else{
-      toast.error('Please Sign in to checkout')
+    } else {
+      toast.error("Please Sign in to checkout");
     }
+  };
 
-  }  
+  const handlePayment = async (token) => {
+    try {
+      // Send the token and other information to the server
+      const response = await fetch('http://localhost:3001/charge', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          amount: totalAmt,
+          email: userInfo.email,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Payment success logic
+        console.log('Payment successful!', result.charge);
+      } else {
+        // Handle payment failure
+        console.error('Payment failed:', result.error);
+      }
+    } catch (error) {
+      console.error('An error occurred during payment processing:', error);
+    }
+    toast.success('Payment successful!');
+
+  };
   return (
     <div>
       <img
-        className="w-full  h-60 object-cover"
+        className="w-full h-60 object-cover"
         src={imageprodactt}
         alt="image"
       />
@@ -60,25 +90,24 @@ export default function Carte() {
             Total <span className="text-xl font-bold">${totalAmt}</span>
           </p>
           <button
-            onClick={handelCheckout}
+            onClick={handleCheckout}
             className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-100"
           >
             proceed to checkout
           </button>
-          {
-            payNow && (
-              <div className="w-full mt-6 flex items-center justify-center"> 
-              <StripeCheckout 
-              stripeKey="pk_test_51OhtyxGZFYUu1l1uyikGUIJbzlh04ByNRCoiCpZz45fdu97P1r0tLs9fLIRvXjL5KOyTJCd98Q5bfTgDBkmmVJfC00aBzPHvmj"
-              name="Z-shopee Online Shopping"
-              amount={totalAmt * 100}
-              label="Pay to Z-shopee"
-              description={`Your Payment amount is $${totalAmt}`}
-              email={userInfo.email}
+          {payNow && (
+            <div className="w-full mt-6 flex items-center justify-center">
+              <StripeCheckout
+                token={handlePayment}
+                stripeKey="pk_test_51OhtyxGZFYUu1l1uyikGUIJbzlh04ByNRCoiCpZz45fdu97P1r0tLs9fLIRvXjL5KOyTJCd98Q5bfTgDBkmmVJfC00aBzPHvmj"
+                name="Z-shopee Online Shopping"
+                amount={parseFloat(totalAmt) * 100}
+                label="Pay to Z-shopee"
+                description={`Your Payment amount is $${totalAmt}`}
+                email={userInfo.email}
               />
-              </div>
-            )
-          }
+            </div>
+          )}
         </div>
       </div>
     </div>
