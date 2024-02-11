@@ -14,6 +14,7 @@ import Carte from "./pages/Carte";
 import { prodactData } from "./api/Apis";
 import DetailsProduct from "./commponents/DetailsProduct";
 import Login from "./pages/Login";
+import { ContactUs } from "./commponents/Contact";
 const Layout = () => {
   return (
     <div>
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/Login",
         element: <Login />,
+      },
+      {
+        path: "/ContactUs",
+        element: <ContactUs />,
       },
    
 

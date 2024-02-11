@@ -8,7 +8,9 @@ import imageprodactt from "./imageprodactt.jpg"
 import iconLogin from "./iconLogin.jpg"
 import google from "./google.png"
 import github from "./gitHub.png"
+import contaactMe from "./contaactMe.jpg"
+import contactMee from "./contactMee.avif"
 
 
 
-export {logoDark,iconHeder,logoFuter,logoPayment,ImageProdact,compra_online,imageprodactt,iconLogin,google,github}
+export {logoDark,iconHeder,logoFuter,logoPayment,ImageProdact,compra_online,imageprodactt,iconLogin,google,github,contaactMe,contactMee}

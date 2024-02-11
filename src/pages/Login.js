@@ -5,7 +5,7 @@ import app from '../firebase.config'
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addUser, remouveUser } from "../Redux/Z-shopeeSlice";
+import { addUser, remouveUser, resetCart } from "../Redux/Z-shopeeSlice";
 
 
 
@@ -39,7 +39,8 @@ const provider =new GoogleAuthProvider()
   const handelSingOut =()=>{
     signOut(auth).then(()=>{
         toast.success("Log Out Successfully!!")
-        dispatche(remouveUser())
+        dispatche(remouveUser());
+        dispatche(resetCart()); 
     }).catch((error)=>{
         console.log(error)
     })

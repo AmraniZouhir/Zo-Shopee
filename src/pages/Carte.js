@@ -5,7 +5,6 @@ import CarteItems from "../commponents/CarteItems";
 import { toast } from "react-toastify";
 import StripeCheckout from "react-stripe-checkout";
 
-
 export default function Carte() {
   const prodactData = useSelector((state) => state.ZshopeeSlic.prodactData);
   const userInfo = useSelector((state) => state.ZshopeeSlic.userInfo);
@@ -31,10 +30,10 @@ export default function Carte() {
   const handlePayment = async (token) => {
     try {
       // Send the token and other information to the server
-      const response = await fetch('http://localhost:3001/charge', {
-        method: 'POST',
+      const response = await fetch("http://localhost:3001/charge", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           token,
@@ -47,16 +46,15 @@ export default function Carte() {
 
       if (result.success) {
         // Payment success logic
-        console.log('Payment successful!', result.charge);
+        console.log("Payment successful!", result.charge);
       } else {
         // Handle payment failure
-        console.error('Payment failed:', result.error);
+        console.error("Payment failed:", result.error);
       }
     } catch (error) {
-      console.error('An error occurred during payment processing:', error);
+      console.error("An error occurred during payment processing:", error);
     }
-    toast.success('Payment successful!');
-
+    toast.success("Payment successful!");
   };
   return (
     <div>
@@ -80,9 +78,10 @@ export default function Carte() {
             <p className="flex items-start gap-4 text-base">
               Shipping{" "}
               <span>
-                ssssss ssss sssssss ssssssssss ssssssssssssssss ssssssssssssss
-                ssssssss ssssssss sssss ssss ssss sssssssssss sssssssssssss
-                sssssssssssssss sssss sssssss sssssss
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                eget nisi nec justo condimentum volutpat. Sed efficitur, sapien
+                quis ullamcorper consectetur, libero quam tristique arcu, sit
+                amet fermentum nunc ligula vel nisi.
               </span>
             </p>
           </div>
