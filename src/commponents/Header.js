@@ -28,7 +28,9 @@ export default function Header() {
             <Link to="/ContactUs">
             <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer'>Contact</li>
             </Link>
+            <Link to='/Blog'>
             <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer'>Blog</li>
+            </Link>
           </ul>
           <Link to="/Cart">
           <div className='relative'> 
