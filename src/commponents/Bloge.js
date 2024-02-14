@@ -1,6 +1,7 @@
 // src/components/Blog.js
 
 import React from 'react';
+import { blog1, blog10, blog11, blog12, blog2, blog3, blog4, blog5, blog6, blog7, blog8, blog9, blogg } from '../assets';
 
 const Blog = () => {
   return (
@@ -11,7 +12,7 @@ const Blog = () => {
         {/* Blog Post 1 */}
         <div className="bg-white p-4 rounded shadow-md">
           <img
-            src="https://via.placeholder.com/300"
+            src={blog1}
             alt="Blog Post 1"
             className="w-full h-48 object-cover mb-4 rounded"
           />
@@ -20,7 +21,7 @@ const Blog = () => {
         </div>
         <div className="bg-white p-4 rounded shadow-md">
           <img
-            src="https://via.placeholder.com/300"
+            src={blog2}
             alt="Blog Post 1"
             className="w-full h-48 object-cover mb-4 rounded"
           />
@@ -29,7 +30,7 @@ const Blog = () => {
         </div>
         <div className="bg-white p-4 rounded shadow-md">
           <img
-            src="https://via.placeholder.com/300"
+            src={blog4}
             alt="Blog Post 1"
             className="w-full h-48 object-cover mb-4 rounded"
           />
@@ -38,7 +39,7 @@ const Blog = () => {
         </div>
         <div className="bg-white p-4 rounded shadow-md">
           <img
-            src="https://via.placeholder.com/300"
+            src={blog5}
             alt="Blog Post 1"
             className="w-full h-48 object-cover mb-4 rounded"
           />
@@ -47,7 +48,7 @@ const Blog = () => {
         </div>
         <div className="bg-white p-4 rounded shadow-md">
           <img
-            src="https://via.placeholder.com/300"
+            src={blog6}
             alt="Blog Post 1"
             className="w-full h-48 object-cover mb-4 rounded"
           />
@@ -56,7 +57,7 @@ const Blog = () => {
         </div>
         <div className="bg-white p-4 rounded shadow-md">
           <img
-            src="https://via.placeholder.com/300"
+            src={blog7}
             alt="Blog Post 1"
             className="w-full h-48 object-cover mb-4 rounded"
           />
@@ -65,7 +66,7 @@ const Blog = () => {
         </div>
         <div className="bg-white p-4 rounded shadow-md">
           <img
-            src="https://via.placeholder.com/300"
+            src={blog8}
             alt="Blog Post 1"
             className="w-full h-48 object-cover mb-4 rounded"
           />
@@ -74,7 +75,7 @@ const Blog = () => {
         </div>
         <div className="bg-white p-4 rounded shadow-md">
           <img
-            src="https://via.placeholder.com/300"
+            src={blog3}
             alt="Blog Post 1"
             className="w-full h-48 object-cover mb-4 rounded"
           />
@@ -83,7 +84,7 @@ const Blog = () => {
         </div>
         <div className="bg-white p-4 rounded shadow-md">
           <img
-            src="https://via.placeholder.com/300"
+            src={blogg}
             alt="Blog Post 1"
             className="w-full h-48 object-cover mb-4 rounded"
           />
@@ -92,7 +93,7 @@ const Blog = () => {
         </div>
         <div className="bg-white p-4 rounded shadow-md">
           <img
-            src="https://via.placeholder.com/300"
+            src={blog10}
             alt="Blog Post 1"
             className="w-full h-48 object-cover mb-4 rounded"
           />
@@ -101,7 +102,7 @@ const Blog = () => {
         </div>
         <div className="bg-white p-4 rounded shadow-md">
           <img
-            src="https://via.placeholder.com/300"
+            src={blog11}
             alt="Blog Post 1"
             className="w-full h-48 object-cover mb-4 rounded"
           />
@@ -112,7 +113,7 @@ const Blog = () => {
         {/* Blog Post 2 */}
         <div className="bg-white p-4 rounded shadow-md">
           <img
-            src="https://via.placeholder.com/300"
+            src={blog12}
             alt="Blog Post 2"
             className="w-full h-48 object-cover mb-4 rounded"
           />
